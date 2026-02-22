@@ -1,0 +1,219 @@
+/* css/styles.css - Wizard Quest Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --color-red: #c41e3a;
+    --color-yellow: #ffd700;
+    --color-green: #2d5016;
+    --color-blue: #0047ab;
+    --color-purple: #663399;
+    --text-light: #f0f0f0;
+    --text-dark: #1a1a1a;
+    --shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a1a;
+    color: var(--text-light);
+    overflow: hidden;
+}
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: var(--transition);
+}
+.screen.hidden {
+    display: none;
+}
+/* ===== AUTH SCREEN ===== */
+#authScreen {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.cavern-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 20% 50%, rgba(196, 30, 58, 0.3) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(102, 51, 153, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+.auth-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    background: rgba(30, 30, 30, 0.95);
+    padding: 60px 50px;
+    border-radius: 20px;
+    box-shadow: var(--shadow), inset 0 0 40px rgba(196, 30, 58, 0.2);
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid var(--color-red);
+}
+.auth-container h1 {
+    font-size: 3em;
+    color: var(--color-red);
+    text-shadow: 0 0 20px rgba(196, 30, 58, 0.8);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+.tagline {
+    font-size: 1.1em;
+    color: var(--color-yellow);
+    margin-bottom: 40px;
+    font-style: italic;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: slideIn 0.5s ease;
+}
+.form-container.hidden {
+    display: none;
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.form-container h2 {
+    color: var(--color-yellow);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+.input-field {
+    padding: 15px;
+    border: 2px solid var(--color-red);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 1em;
+    transition: var(--transition);
+}
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-light);
+}
+.checkbox-label input[type="checkbox"] {
+    cursor: pointer;
+}
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-red) 0%, #a01530 100%);
+    color: white;
+    box-shadow: var(--shadow);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(196, 30, 58, 0.5);
+}
+.btn-primary:active {
+    transform: translateY(0);
+}
+.btn-secondary {
+    background: var(--color-blue);
+    color: white;
+}
+.btn-secondary:hover {
+    background: #003380;
+}
+.btn-small {
+    padding: 8px 16px;
+    font-size: 0.9em;
+}
+.toggle-form {
+    margin-top: 20px;
+    color: var(--text-light);
+}
+.toggle-form a {
+    color: var(--color-yellow);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.toggle-form a:hover {
+    text-decoration: underline;
+}
+/* ===== GAME SCREEN ===== */
+#gameScreen {
+    flex-direction: column;
+    background: #1a1a1a;
+}
+.game-header {
+    background: linear-gradient(90deg, #2d2d2d 0%, #1a1a1a 100%);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--color-red);
+    box-shadow: var(--shadow);
+}
+.header-left h1 {
+    font-size: 2em;
+    color: var(--color-red);
+    text-shadow: 0 0 10px rgba(196, 30, 58, 0.8);
+    margin-bottom: 5px;
+}
+.user-greeting {
+    color: var(--color-yellow);
+    font-size: 1em;
+}
+.header-right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.stat-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(196, 30, 58, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--color-red);
+}
+.stat-label {
+    color: var(--color-yellow);
+    font-weight: bold;
+}
+.stat-value {
+    color: var(--text-light);
+    font-size: 1.2em;
+    font-weight: bold;
+}
