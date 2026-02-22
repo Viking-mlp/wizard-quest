@@ -3,29 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Wizard Quest</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Wizard Quest - An Incremental Logic & Strategy Adventure</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Wizard Quest!</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Embark on an extraordinary adventure!</h2>
-            <p>Join us in the magical world of Wizard Quest, where your journey begins.</p>
-            <button><a href="#">Start Your Quest</a></button>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Wizard Quest. All rights reserved.</p>
-    </footer>
+    <div id="app">
+        <!-- Auth Screen -->
+        <div id="authScreen" class="screen">
+            <div class="cavern-background"></div>
+            <div class="auth-container">
+                <h1>⚔️ WIZARD QUEST ⚔️</h1>
+                <p class="tagline">An Incremental Logic & Strategy Adventure</p>
+                
+                <div id="loginForm" class="form-container">
+                    <h2>Welcome Back, Wizard</h2>
+                    <input type="text" id="loginUsername" placeholder="Username" class="input-field">
+                    <input type="password" id="loginPassword" placeholder="Password" class="input-field">
+                    <button id="loginBtn" class="btn btn-primary">Enter the Cavern</button>
+                    <p class="toggle-form">Don't have an account? <a href="#" onclick="toggleForms()">Create one</a></p>
+                </div>
+
+                <div id="registerForm" class="form-container hidden">
+                    <h2>Begin Your Journey</h2>
+                    <input type="text" id="regUsername" placeholder="Username" class="input-field">
+                    <input type="email" id="regEmail" placeholder="Email Address" class="input-field">
+                    <input type="password" id="regPassword" placeholder="Password" class="input-field">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="newsletter">
+                        Receive monthly newsletter
+                    </label>
+                    <button id="registerBtn" class="btn btn-primary">Create Account</button>
+                    <p class="toggle-form">Already a wizard? <a href="#" onclick="toggleForms()">Login</a></p>
+                </div>
+
+                <div id="verificationForm" class="form-container hidden">
+                    <h2>Verify Your Email</h2>
+                    <p>Enter the 6-digit code sent to your email:</p>
+                    <input type="text" id="verificationCode" placeholder="000000" class="input-field" maxlength="6">
+                    <button id="verifyBtn" class="btn btn-primary">Verify</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen hidden">
+            <header class="game-header">
+                <div class="header-left">
+                    <h1>⚔️ WIZARD QUEST ⚔️</h1>
+                    <p id="userGreeting" class="user-greeting"></p>
+                </div>
+                <div class="header-right">
+                    <div class="stat-display">
+                        <span class="stat-label">Gold:</span>
+                        <span id="goldDisplay" class="stat-value">1000</span>
+                    </div>
+                    <div class="stat-display">
+                        <span class="stat-label">Stone:</span>
+                        <span id="stoneDisplay" class="stat-value">1</span>
+                    </div>
+                    <div class="stat-display">
+                        <span class="stat-label">Level:</span>
+                        <span id="levelDisplay" class="stat-value">🔴 Red</span>
+                    </div>
+                    <button id="logoutBtn" class="btn btn-small">Logout</button>
+                </div>
+            </header>
+
+            <main class="game-content">
+                <div class="realm-container">
+                    <div id="realmBackground" class="realm-background"></div>
+                    
+                    <div class="game-info">
+                        <h2 id="realmTitle">Red Realm - Stone 1</h2>
+                        <div class="progress-bar">
+                            <div id="progressFill" class="progress-fill"></div>
+                            <span id="progressText" class="progress-text">0 / 10,000 Gold</span>
+                        </div>
+                        <p id="trollMessage" class="troll-message">The Troll demands 10,000 gold to advance!</p>
+                    </div>
+
+                    <div class="games-selector">
+                        <h3>Choose Your Game:</h3>
+                        <div id="gamesList" class="games-grid">
+                            <!-- Games will be populated here -->
+                        </div>
+                    </div>
+
+                    <div id="gameArea" class="game-area hidden">
+                        <div id="currentGame"></div>
+                        <button id="backToMenu" class="btn btn-secondary">Back to Menu</button>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="game-footer">
+                <p>Daily Login Bonus: <span id="dailyBonus">50</span> Gold | Last Login: <span id="lastLogin">Today</span></p>
+                <div id="adSpace" class="ad-space">
+                    <!-- Google AdSense ads will be placed here -->
+                    <p style="text-align: center; color: #999;">Ad Space - Google AdSense Integration</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/games.js"></script>
+    <script src="js/economy.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
